@@ -82,11 +82,11 @@ class LoginSuccessHandler implements AuthenticationSuccessHandlerInterface
                 if ($session->get('referer') !== null && $session->get('referer') !== '') {
                     $response = new RedirectResponse($session->get('referer'));
                 } else {
-                    $response = new RedirectResponse($request->getBasePath() . '/');
+                    $response = new RedirectResponse($request->getBaseUrl() . '/');
                 }
             } else {
                 // if no referer then go to homepage
-                $response = new RedirectResponse($request->getBasePath() . '/');
+                $response = new RedirectResponse($request->getBaseUrl() . '/');
             }
 
             if ($request->isXmlHttpRequest() || $request->request->get('_format') === 'json') {
